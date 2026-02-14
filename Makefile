@@ -5,20 +5,19 @@ PY_BOOTSTRAP?=python3
 PYTHON=$(VENV)/bin/python
 PIP=$(PYTHON) -m pip
 
-$(PYTHON):
-	$(PY_BOOTSTRAP) -m venv $(VENV)
+install:
+	test -x $(PYTHON) || $(PY_BOOTSTRAP) -m venv $(VENV)
 	$(PIP) install -U pip
 	$(PIP) install -e .
+	$(PIP) install pytest
 
-install: $(PYTHON)
-
-run: $(PYTHON)
+run: install
 	PYTHONPATH=src AUTO_CONFIRM=1 $(PYTHON) -m plangate_demo.main
 
-run-interactive: $(PYTHON)
+run-interactive: install
 	PYTHONPATH=src AUTO_CONFIRM=0 $(PYTHON) -m plangate_demo.main
 
-test: $(PYTHON)
+test: install
 	$(PYTHON) -m pytest -q
 
 clean:
