@@ -1,0 +1,46 @@
+# SDF PlanGate Demo
+PlanGate prevents rogue agents from writing without human confirmation.
+
+## Quickstart
+```bash
+git clone https://github.com/directiveproto/sdf-plangate-demo.git
+cd sdf-plangate-demo
+make run
+```
+
+## Expected Output (Excerpt)
+```text
+=== SDF PlanGate Demo ===
+Scenario: unsafe_write
+Mode: local (sdf-plan)
+
+Agent proposed plan with 2 steps.
+Running PlanGate (policy + lint)...
+
+BLOCKED: unsafe write requires confirmation
+...
+CONFIRMED
+Re-running PlanGate...
+PASSED: safe to proceed
+Executing S2: "Apply production config change"
+WRITE EXECUTED (demo)
+```
+
+## How It Works
+`agent plan -> policy annotate -> lint -> confirm gate -> execute`
+
+## Commands
+```bash
+make run
+make run-interactive
+make test
+```
+
+## Environment
+Copy `.env.example` to `.env` and adjust if needed.
+
+- Default mode is local (`SDF_MODE=local`) and runs without any cloud dependencies.
+- Optional cloud mode:
+  - `SDF_MODE=cloud`
+  - `SDF_CLOUD_URL=...`
+  - `SDF_API_KEY=...`
