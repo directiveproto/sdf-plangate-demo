@@ -1,3 +1,5 @@
+![CI](https://github.com/directiveproto/sdf-plangate-demo/actions/workflows/ci.yml/badge.svg)
+
 # SDF PlanGate Demo
 PlanGate prevents rogue agents from writing without human confirmation.
 
