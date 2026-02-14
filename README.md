@@ -3,6 +3,14 @@
 # SDF PlanGate Demo
 PlanGate prevents rogue agents from writing without human confirmation.
 
+## Expected Output
+```text
+BLOCKED: WRITE_WITHOUT_CONFIRM (risk: external_write)
+CONFIRM REQUIRED: "Approve write to production?"
+CONFIRMED
+WRITE EXECUTED (demo)
+```
+
 ## Quickstart
 ```bash
 git clone https://github.com/directiveproto/sdf-plangate-demo.git
@@ -36,6 +44,7 @@ WRITE EXECUTED (demo)
 make run
 make run-interactive
 make test
+make clean
 ```
 
 ## Environment
@@ -46,3 +55,7 @@ Copy `.env.example` to `.env` and adjust if needed.
   - `SDF_MODE=cloud`
   - `SDF_CLOUD_URL=...`
   - `SDF_API_KEY=...`
+
+## Use In Your Own Agents
+- `sdf-plan` on PyPI: https://pypi.org/project/sdf-plan/
+- `sdf-plan` source repo: https://github.com/directiveproto/sdf-plan

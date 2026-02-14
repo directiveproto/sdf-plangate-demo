@@ -1,13 +1,24 @@
-.PHONY: install run run-interactive test
+.PHONY: install run run-interactive test clean
 
-install:
-	python -m venv .venv && . .venv/bin/activate && pip install -U pip && pip install -e .
+VENV=.venv
+PYTHON=$(VENV)/bin/python
+PIP=$(PYTHON) -m pip
 
-run:
-	AUTO_CONFIRM=1 python -m plangate_demo.main
+$(PYTHON):
+	python -m venv $(VENV)
+	$(PIP) install -U pip
+	$(PIP) install -e .
 
-run-interactive:
-	AUTO_CONFIRM=0 python -m plangate_demo.main
+install: $(PYTHON)
 
-test:
-	python -m pytest -q
+run: $(PYTHON)
+	AUTO_CONFIRM=1 $(PYTHON) -m plangate_demo.main
+
+run-interactive: $(PYTHON)
+	AUTO_CONFIRM=0 $(PYTHON) -m plangate_demo.main
+
+test: $(PYTHON)
+	$(PYTHON) -m pytest -q
+
+clean:
+	rm -rf $(VENV) .pytest_cache __pycache__ src/plangate_demo/__pycache__ tests/__pycache__
