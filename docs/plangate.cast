@@ -1,0 +1,4 @@
+{"version": 2, "width": 1, "height": 1, "timestamp": 1771104329, "idle_time_limit": 1.0, "env": {"SHELL": "/bin/bash", "TERM": "xterm-256color"}, "title": "PlanGate demo: unsafe write blocked → confirm → continue"}
+[0.046831, "o", "PYTHONPATH=src AUTO_CONFIRM=1 .venv/bin/python -m plangate_demo.main\r\n"]
+[4.237929, "o", "=== SDF PlanGate Demo ===\r\nScenario: unsafe_write\r\nMode: local (sdf-plan)\r\n\r\nAgent proposed plan with 2 steps.\r\nRunning PlanGate (policy + lint)...\r\n\r\nBLOCKED: unsafe write requires confirmation\r\nLint:\r\n  - WARN NO_VERIFY_BEFORE_WRITE at step S2\r\nPolicy:\r\n  - requires_confirm: True\r\n  - confirm_prompt: \"Confirm before executing side-effecting action\"\r\n\r\nAUTO_CONFIRM=1 -> simulating YES\r\nCONFIRMED\r\nRe-running PlanGate..."]
+[4.238434, "o", "\r\n\r\nPASSED: safe to proceed\r\nExecuting S2: \"Apply production config change\"\r\nWRITE EXECUTED (demo)\r\nDone.\r\n"]

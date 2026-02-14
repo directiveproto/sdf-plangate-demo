@@ -2,6 +2,7 @@
 
 # SDF PlanGate Demo
 PlanGate prevents rogue agents from writing without human confirmation.
+[![PlanGate demo](https://asciinema.org/a/ltkaQQVEywuP5CfC.svg)](https://asciinema.org/a/ltkaQQVEywuP5CfC)
 
 ## Expected Output
 ```text
