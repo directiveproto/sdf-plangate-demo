@@ -3,14 +3,7 @@
 # SDF PlanGate Demo
 PlanGate prevents rogue agents from writing without human confirmation.
 ![PlanGate demo](docs/demo.gif)
-
-## Expected Output
-```text
-BLOCKED: WRITE_WITHOUT_CONFIRM (risk: external_write)
-CONFIRM REQUIRED: "Approve write to production?"
-CONFIRMED
-WRITE EXECUTED (demo)
-```
+[![PlanGate demo (asciinema)](https://asciinema.org/a/ltkaQQVEywuP5CfC.svg)](https://asciinema.org/a/ltkaQQVEywuP5CfC)
 
 ## Quickstart
 ```bash
@@ -19,7 +12,7 @@ cd sdf-plangate-demo
 make run
 ```
 
-## Expected Output (Excerpt)
+## Expected Output
 ```text
 === SDF PlanGate Demo ===
 Scenario: unsafe_write
@@ -45,6 +38,8 @@ WRITE EXECUTED (demo)
 make run
 make run-interactive
 make test
+make record
+make gif
 make clean
 ```
 

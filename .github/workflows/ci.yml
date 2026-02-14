@@ -18,5 +18,14 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install -U pip
-      - run: make run
+      - name: Smoke run with output assertions
+        run: |
+          make run | tee smoke.out
+          grep -q "BLOCKED" smoke.out
+          grep -q "CONFIRMED" smoke.out
+          grep -q "WRITE EXECUTED" smoke.out
       - run: make test
+      - name: Marketing asset checks
+        run: |
+          test -s docs/demo.gif
+          grep -q "!\[PlanGate demo\](docs/demo.gif)" README.md
