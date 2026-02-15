@@ -11,6 +11,13 @@ cd sdf-plangate-demo
 make run
 ```
 
+## Cloud Quickstart
+```bash
+export CLOUD_BASE_URL=https://api.yourdomain.com
+export CLOUD_API_KEY=sk_test_xxx
+make run-cloud
+```
+
 ## Expected Output
 ```text
 === SDF PlanGate Demo ===
@@ -35,6 +42,7 @@ WRITE EXECUTED (demo)
 ## Commands
 ```bash
 make run
+make run-cloud
 make run-interactive
 make test
 make record
@@ -48,8 +56,8 @@ Copy `.env.example` to `.env` and adjust if needed.
 - Default mode is local (`SDF_MODE=local`) and runs without any cloud dependencies.
 - Optional cloud mode:
   - `SDF_MODE=cloud`
-  - `SDF_CLOUD_URL=...`
-  - `SDF_API_KEY=...`
+  - `CLOUD_BASE_URL=...`
+  - `CLOUD_API_KEY=...`
 
 ## Use In Your Own Agents
 - `sdf-plan` on PyPI: https://pypi.org/project/sdf-plan/

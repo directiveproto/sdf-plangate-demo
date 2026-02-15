@@ -17,10 +17,10 @@ def _truthy(value: str | None) -> bool:
 
 def _fetch_plan(mode: str, scenario: str) -> Dict[str, Any]:
     if mode == "cloud":
-        api_base = os.getenv("SDF_CLOUD_URL", "").strip()
-        api_key = os.getenv("SDF_API_KEY", "").strip()
+        api_base = (os.getenv("CLOUD_BASE_URL") or os.getenv("SDF_CLOUD_URL") or "").strip()
+        api_key = (os.getenv("CLOUD_API_KEY") or os.getenv("SDF_API_KEY") or "").strip()
         if not api_base or not api_key:
-            raise RuntimeError("Cloud mode requires SDF_CLOUD_URL and SDF_API_KEY")
+            raise RuntimeError("Cloud mode requires CLOUD_BASE_URL and CLOUD_API_KEY")
         return decompose_via_api(
             api_base=api_base,
             api_key=api_key,

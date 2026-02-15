@@ -1,4 +1,4 @@
-.PHONY: install run run-interactive test record gif clean
+.PHONY: install run run-cloud run-interactive test record gif clean
 
 VENV=.venv
 PY_BOOTSTRAP?=python3
@@ -13,6 +13,11 @@ install:
 
 run: install
 	PYTHONPATH=src AUTO_CONFIRM=1 $(PYTHON) -m plangate_demo.main
+
+run-cloud: install
+	test -n "$$CLOUD_BASE_URL"
+	test -n "$$CLOUD_API_KEY"
+	PYTHONPATH=src SDF_MODE=cloud AUTO_CONFIRM=1 $(PYTHON) -m plangate_demo.main
 
 run-interactive: install
 	PYTHONPATH=src AUTO_CONFIRM=0 $(PYTHON) -m plangate_demo.main
